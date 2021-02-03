@@ -1,0 +1,86 @@
+package #<daoPackage>;
+
+import java.io.Serializable;
+import java.util.List;
+
+import #<modelPackage>.#<modelName>;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.*;
+/**
+ * #<tableComment>(#<tableName>).
+ *
+ * @author luna
+ * @since #<createTime>
+ */
+@Mapper
+public interface #<daoName>{
+
+
+    /**
+     * 根据id查询
+     *
+     * @param id
+     * @return #<modelName>
+     */
+    @Select("select  #<tableName>(#<fields>)  from #<tableName> where id = #{id}")
+    @Results({
+    #<result>})
+    #<modelName> get(@Param("id")Long  id);
+
+    /**
+     * 单个插入
+     *
+     * @param #<modelNameLower> #<modelName>
+     * @return
+     */
+    @Insert("insert into #<tableName>(#<fields>) "
+        + "values(#<insertValues>)")
+    @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "id", before = false, resultType = Integer.class)
+    int insert(#<modelName> #<modelNameLower>);
+
+    /**
+     * 批量插入
+     *
+     * @param list #<modelName>列表
+     */
+    @Insert("<script>insert into #<tableName>(#<fields>) values "
+        + "<foreach collection='list' index='index' item='n' separator=','> "
+        + "(#<batchInsertValues>)"
+        + "</foreach></script>")
+    void insertBatch(@Param("list") List<#<modelName>> list);
+
+    /**
+     * 更新
+     *
+     * @param #<modelNameLower>
+     */
+    @Update("update #<tableName> set #<updateValues> where id = #{id}")
+    void update(#<modelName>  #<modelNameLower>);
+
+    /**
+     * 单个删除
+     *
+     * @param id id
+     */
+    @Delete("delete from #<tableName> where id = #{id}")
+    void delete(Long id);
+
+    /**
+     * 批量删除
+     *
+     * @param ids ids
+     */
+    @Delete("<script>delete from #<tableName> where id in "
+        + "<foreach collection='ids' index='index' item='id' open='(' separator=',' close=')'>"
+        + "#{id}"
+        + "</foreach></script>")
+    void deleteByIds(@Param("ids") List<Long> ids);
+
+    /**
+     * 统计
+     *
+     * @return 数量
+     */
+    @Select("select count(*) from #<tableName>")
+    int count();
+}

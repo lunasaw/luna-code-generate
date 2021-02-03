@@ -1,0 +1,16 @@
+package #<modelPackage>;
+
+import java.util.Date;
+/**
+ * #<tableComment>(#<tableName>)
+ *
+ * @author luna
+ * @since #<createTime>
+ */
+public class #<modelName>{
+
+    private static final long serialVersionUID = #<serialVersionUID>L;
+
+#<fields>
+#<getterSetter>
+}
