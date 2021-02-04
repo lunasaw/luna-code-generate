@@ -22,7 +22,7 @@ public interface #<daoName>{
      * @param id
      * @return #<modelName>
      */
-    @Select("select  #<tableName>(#<fields>)  from #<tableName> where id = #{id}")
+    @Select("select  #<fields>  from #<tableName> where id = #{id}")
     @Results({
     #<result>})
     #<modelName> get(@Param("id")Long  id);

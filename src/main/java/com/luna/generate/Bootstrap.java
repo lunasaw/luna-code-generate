@@ -105,9 +105,9 @@ public class Bootstrap {
                 // mysql中这里改成3
                 final String tableName = tables.getString(3);
                 // 这里优化了一下 导出自己需要的表就行 没必要全部导出
-//                if (!table.isEmpty() || !(table).equals(tableName)) {
-//                    continue;
-//                }
+                if (!(table).equals(tableName)) {
+                    continue;
+                }
                 System.out.println(tableName + "-------------");
                 final String tableRemarks = tables.getString("REMARKS");
                 ResultSet primaryKeys = metaData.getPrimaryKeys(null, null, tableName);
