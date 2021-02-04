@@ -22,7 +22,7 @@ public interface #<daoName>{
      * @param id
      * @return #<modelName>
      */
-    @Select("select  #<fields>  from #<tableName> where id = #{id}")
+    @Select("SELECT  #<fields>  FROM #<tableName> WHERE id = #{id}")
     @Results({
     #<result>})
     #<modelName> get(@Param("id")Long  id);
@@ -33,8 +33,8 @@ public interface #<daoName>{
      * @param #<modelNameLower> #<modelName>
      * @return
      */
-    @Insert("insert into #<tableName>(#<fields>) "
-        + "values(#<insertValues>)")
+    @Insert("INSERT INTO #<tableName>(#<fields>) "
+        + "VALUES (#<insertValues>)")
     @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "id", before = false, resultType = Integer.class)
     int insert(#<modelName> #<modelNameLower>);
 
@@ -43,7 +43,7 @@ public interface #<daoName>{
      *
      * @param list #<modelName>列表
      */
-    @Insert("<script>insert into #<tableName>(#<fields>) values "
+    @Insert("<script>INSERT INTO #<tableName>(#<fields>) VALUES "
         + "<foreach collection='list' index='index' item='n' separator=','> "
         + "(#<batchInsertValues>)"
         + "</foreach></script>")
@@ -54,7 +54,7 @@ public interface #<daoName>{
      *
      * @param #<modelNameLower>
      */
-    @Update("update #<tableName> set #<updateValues> where id = #{id}")
+    @Update("UPDATE #<tableName> SET #<updateValues> WHERE id = #{id}")
     void update(#<modelName>  #<modelNameLower>);
 
     /**
@@ -62,7 +62,7 @@ public interface #<daoName>{
      *
      * @param id id
      */
-    @Delete("delete from #<tableName> where id = #{id}")
+    @Delete("DELETE FROM #<tableName> WHERE id = #{id}")
     void delete(Long id);
 
     /**
@@ -70,7 +70,7 @@ public interface #<daoName>{
      *
      * @param ids ids
      */
-    @Delete("<script>delete from #<tableName> where id in "
+    @Delete("<script>DELETE FROM #<tableName> WHERE ID IN "
         + "<foreach collection='ids' index='index' item='id' open='(' separator=',' close=')'>"
         + "#{id}"
         + "</foreach></script>")
@@ -81,6 +81,6 @@ public interface #<daoName>{
      *
      * @return 数量
      */
-    @Select("select count(*) from #<tableName>")
+    @Select("SELECT COUNT(*) FROM #<tableName>")
     int count();
 }
