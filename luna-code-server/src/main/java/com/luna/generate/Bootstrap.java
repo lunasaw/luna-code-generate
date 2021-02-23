@@ -2,7 +2,6 @@ package com.luna.generate;
 
 import com.google.common.base.CaseFormat;
 import com.luna.common.os.OSinfo;
-import com.luna.common.utils.FileUtils;
 import com.luna.generate.creator.DaoCreator;
 import com.luna.generate.creator.ModelCreator;
 import com.luna.generate.model.Field;
