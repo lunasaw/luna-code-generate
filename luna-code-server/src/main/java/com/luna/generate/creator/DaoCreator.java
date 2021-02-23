@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-
 /**
  * @author luna
  * @since 2019/7/29 11:01
@@ -24,7 +23,7 @@ public class DaoCreator extends AbstractCreator {
     public void createDao() {
         fieldsForEach((longTableName, fields) -> {
             FileUtils.writeStringToFile(
-                    getDaoFilePath(longTableName), createDaoFileContent(longTableName));
+                getDaoFilePath(longTableName), createDaoFileContent(longTableName));
         });
     }
 

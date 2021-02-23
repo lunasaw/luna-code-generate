@@ -26,6 +26,11 @@ public class ModelCreator extends AbstractCreator {
             getModelFilePath(longTableName), createModelFileContent(longTableName)));
     }
 
+    /**
+     *
+     * @param longTableName
+     * @return
+     */
     private String createModelFileContent(String longTableName) {
         final String[] tableNames = longTableName.split(SPLIT_CHAR);
         final String tableName = tableNames[0];
