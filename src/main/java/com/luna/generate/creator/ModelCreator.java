@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.luna.common.os.OSinfo;
 import com.luna.common.utils.FileUtils;
 import com.luna.generate.model.Field;
 import com.luna.generate.model.Table;
@@ -22,15 +23,18 @@ public class ModelCreator extends AbstractCreator {
 
     public void createModel() {
         fieldsForEach((longTableName, fields) -> FileUtils.writeStringToFile(
-                getModelFilePath(longTableName), createModelFileContent(longTableName))
-        );
+            getModelFilePath(longTableName), createModelFileContent(longTableName)));
     }
-
 
     private String createModelFileContent(String longTableName) {
         final String[] tableNames = longTableName.split(SPLIT_CHAR);
         final String tableName = tableNames[0];
-        String fileContent = FileUtils.readFileToString(MODEL_TEMP);
+        String fileContent = "";
+        if (OSinfo.isWindows()) {
+            fileContent = FileUtils.readFileToString(WIN_MODEL_TEMP);
+        } else if (OSinfo.isMacOSX() || OSinfo.isMacOS()) {
+            fileContent = FileUtils.readFileToString(MAC_MODEL_TEMP);
+        }
         final String tableComment = tableNames.length > 1 ? tableNames[1] : "";
         fileContent = fileContent.replaceAll("#<tableComment>", tableComment);
         fileContent = fileContent.replaceAll("#<tableName>", longTableName);

@@ -63,7 +63,7 @@ public interface #<daoName>{
      * @param id id
      */
     @Delete("DELETE FROM #<tableName> WHERE id = #{id}")
-    void delete(Long id);
+    void delete(@Param("id") Long id);
 
     /**
      * 批量删除

@@ -16,10 +16,15 @@ import com.google.common.base.CaseFormat;
 
 abstract class AbstractCreator {
 
-    static final String         MODEL_TEMP = "src\\main\\resources\\EntityTemplate";
-    static final String         DAO_TEMP   = "src\\main\\resources\\DaoTemplate";
-    static final String         SPLIT_CHAR = "#";
-    private static final String JAVA       = ".java";
+    // mac
+    static final String         MAC_MODEL_TEMP = "src/main/resources/EntityTemplate";
+    static final String         MAC_DAO_TEMP   = "src/main/resources/DaoTemplate";
+    // windows
+    static final String         WIN_MODEL_TEMP = "src\\main\\resources\\EntityTemplate";
+    static final String         WIN_DAO_TEMP   = "src\\main\\resources\\DaoTemplate";
+
+    static final String         SPLIT_CHAR     = "#";
+    private static final String JAVA           = ".java";
 
     Table                       table;
 

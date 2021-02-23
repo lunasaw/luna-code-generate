@@ -1,25 +1,24 @@
 package com.luna.generate.model;
 
-
 /**
  * @author luna
  * @since 2019/7/29 11:01
  */
 public class Field {
 
-    private String fieldName;
+    private String  fieldName;
 
-    private String fieldType;
+    private String  fieldType;
 
-    private String javaFieldName;
+    private String  javaFieldName;
 
-    private String remarks;
+    private String  remarks;
 
     private boolean key;
 
-    private int precision;
+    private int     precision;
 
-    private int scale;
+    private int     scale;
 
     private boolean nullable;
 
@@ -77,6 +76,9 @@ public class Field {
             return "BigDecimal";
         }
         if (fieldType.toUpperCase().startsWith("MEDIUMTEXT")) {
+            return "String";
+        }
+        if (fieldType.toUpperCase().startsWith("TEXT")) {
             return "String";
         }
 

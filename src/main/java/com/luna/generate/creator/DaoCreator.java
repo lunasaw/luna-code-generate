@@ -1,5 +1,6 @@
 package com.luna.generate.creator;
 
+import com.luna.common.os.OSinfo;
 import com.luna.common.utils.FileUtils;
 import com.luna.generate.model.Field;
 import com.luna.generate.model.Table;
@@ -29,9 +30,13 @@ public class DaoCreator extends AbstractCreator {
 
     private String createDaoFileContent(String longTableName) {
         final String[] tableNames = longTableName.split(SPLIT_CHAR);
-
         final String tableName = tableNames[0];
-        String fileContent =  FileUtils.readFileToString(DAO_TEMP);
+        String fileContent = "";
+        if (OSinfo.isWindows()) {
+            fileContent = FileUtils.readFileToString(WIN_DAO_TEMP);
+        } else if (OSinfo.isMacOSX() || OSinfo.isMacOS()) {
+            fileContent = FileUtils.readFileToString(MAC_DAO_TEMP);
+        }
         final String tableComment = tableNames.length > 1 ? tableNames[1] : "";
         fileContent = fileContent.replaceAll("#<tableComment>", tableComment);
         fileContent = fileContent.replaceAll("#<tableName>", tableName);

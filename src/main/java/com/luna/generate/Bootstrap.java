@@ -1,6 +1,8 @@
 package com.luna.generate;
 
 import com.google.common.base.CaseFormat;
+import com.luna.common.os.OSinfo;
+import com.luna.common.utils.FileUtils;
 import com.luna.generate.creator.DaoCreator;
 import com.luna.generate.creator.ModelCreator;
 import com.luna.generate.model.Field;
@@ -57,10 +59,16 @@ public class Bootstrap {
         }
 
         Table table = new Table();
+
+        if (OSinfo.isWindows()) {
+            table.setModelFolder(PROP.getProperty("win.java.model.src.folder"));
+            table.setDaoFolder(PROP.getProperty("win.java.dao.src.folder"));
+        } else if (OSinfo.isMacOSX() || OSinfo.isMacOS()) {
+            table.setModelFolder(PROP.getProperty("mac.java.model.src.folder"));
+            table.setDaoFolder(PROP.getProperty("mac.java.dao.src.folder"));
+        }
         table.setModelPackage(PROP.getProperty("java.model.package"));
-        table.setModelFolder(PROP.getProperty("java.model.src.folder"));
         table.setDaoPackage(PROP.getProperty("java.dao.package"));
-        table.setDaoFolder(PROP.getProperty("java.dao.src.folder"));
         table.setModelPrefix(PROP.getProperty("java.model.prefix"));
         table.setModelSuffix(PROP.getProperty("java.model.suffix"));
         table.setDaoPrefix(PROP.getProperty("java.dao.prefix"));
