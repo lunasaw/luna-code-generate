@@ -17,8 +17,8 @@ import com.google.common.base.CaseFormat;
 abstract class AbstractCreator {
 
     /** mac */
-    static final String         MAC_MODEL_TEMP = "src/main/resources/EntityTemplate";
-    static final String         MAC_DAO_TEMP   = "src/main/resources/DaoTemplate";
+    static final String         MAC_MODEL_TEMP = "luna-code-server/src/main/resources/EntityTemplate";
+    static final String         MAC_DAO_TEMP   = "luna-code-server/src/main/resources/DaoTemplate";
     /** windows */
     static final String         WIN_MODEL_TEMP = "src\\main\\resources\\EntityTemplate";
     static final String         WIN_DAO_TEMP   = "src\\main\\resources\\DaoTemplate";

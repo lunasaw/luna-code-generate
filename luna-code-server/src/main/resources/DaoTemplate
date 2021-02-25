@@ -35,7 +35,7 @@ public interface #<daoName>{
      */
     @Insert("INSERT INTO #<tableName>(#<fields>) "
         + "VALUES (#<insertValues>)")
-    @SelectKey(statement = "SELECT LAST_INSERT_ID()", keyProperty = "id", before = false, resultType = Integer.class)
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(#<modelName> #<modelNameLower>);
 
     /**
