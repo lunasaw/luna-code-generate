@@ -1,7 +1,7 @@
 package com.luna.generate.creator;
 
+import com.luna.common.file.FileUtils;
 import com.luna.common.os.OSinfo;
-import com.luna.common.utils.FileUtils;
 import com.luna.generate.model.Field;
 import com.luna.generate.model.Table;
 

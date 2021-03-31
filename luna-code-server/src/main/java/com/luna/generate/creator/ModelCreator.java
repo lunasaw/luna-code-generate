@@ -5,8 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.luna.common.file.FileUtils;
 import com.luna.common.os.OSinfo;
-import com.luna.common.utils.FileUtils;
 import com.luna.generate.model.Field;
 import com.luna.generate.model.Table;
 import org.apache.commons.lang3.StringUtils;
