@@ -28,6 +28,18 @@ public interface #<daoName>{
     #<modelName> get(@Param("id")Long  id);
 
 
+    @Select({
+            "<script>",
+            "SELECT  #<fields> ",
+            "FROM #<tableName>",
+            "WHERE id in",
+            "<foreach collection='ids' item='id' open='(' separator=',' close=')'>",
+            "#{id}",
+            "</foreach>",
+            "</script>"
+    })
+     #<modelName> getByIds(@Param("ids") List<Long> ids);
+
     /**
      * 分页查询
      *
@@ -83,7 +95,7 @@ public interface #<daoName>{
      *
      * @param ids ids
      */
-    @Delete("<script>DELETE FROM #<tableName> WHERE ID IN "
+    @Delete("<script>DELETE FROM #<tableName> WHERE id IN "
         + "<foreach collection='ids' index='index' item='id' open='(' separator=',' close=')'>"
         + "#{id}"
         + "</foreach></script>")
