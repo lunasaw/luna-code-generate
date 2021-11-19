@@ -27,6 +27,19 @@ public interface #<daoName>{
     #<result>})
     #<modelName> get(@Param("id")Long  id);
 
+
+    /**
+     * 分页查询
+     *
+     * @param id
+     * @return #<modelName>
+     */
+    @Select("SELECT  #<fields>  FROM #<tableName>  ORDER BY modified_time DESC LIMIT #{offset}, #{rows}")
+    @Results({
+    #<result>})
+    List<#<modelName>> list(@Param("offset") Integer offset, @Param("rows") Integer rows);
+
+
     /**
      * 单个插入
      *
