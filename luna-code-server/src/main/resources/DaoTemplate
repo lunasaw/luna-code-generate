@@ -38,6 +38,8 @@ public interface #<daoName>{
             "</foreach>",
             "</script>"
     })
+    @Results({
+        #<result>})
      #<modelName> getByIds(@Param("ids") List<Long> ids);
 
     /**
